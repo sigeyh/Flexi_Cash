@@ -1,0 +1,26 @@
+{
+    "name": "Ikash Loans App",
+    "short_name": "Ikash",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#4776E6",
+    "theme_color": "#3f4bef",
+    "icons": [
+      {
+        "src": "/images/icons/icon-72x72.png",
+        "type": "image/png",
+        "sizes": "72x72"
+      },
+      {
+        "src": "/images/icons/icon-192x192.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "/images/icons/icon-512x512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ]
+  }
+    
