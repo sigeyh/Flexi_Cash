@@ -15,10 +15,10 @@ body {
 
 /* Main container styling */
 .container {
-  width: 50%;
+  width: 100%;
   max-width: 600px;
   margin: 0 auto 20px;
-  padding: 20px;
+  padding: 30px;
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 10px;
