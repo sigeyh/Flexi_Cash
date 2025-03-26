@@ -19,7 +19,7 @@ body {
 
 /* Styling for the main container */
 .container {
-  width: 50%;
+  width: 100%;
   max-width: 500px;
   background-color: #fff;
   padding: 20px;
