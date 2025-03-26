@@ -91,10 +91,69 @@
   </div>
   
   <footer class="footer">
-    <p>&copy; 2025 Terms and conditions apply.</p>
+    <p>&copy; 2025 SecureLend Financial Services. *Terms and conditions apply.</p>
   </footer>
   
   <!-- Service Worker and PWA scripts remain unchanged -->
   <script>
     if ('serviceWorker' in navigator) {
-      window.add
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(registration => {
+            console.log('Service Worker registered successfully:', registration.scope);
+          })
+          .catch(error => {
+            console.log('Service Worker registration failed:', error);
+          });
+      });
+    }
+    
+    // PWA Install Popup Logic (if applicable)
+    let deferredPrompt;
+    let pwaInstallPopup = document.getElementById('pwa-install-popup');
+    
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      setTimeout(() => {
+        if (pwaInstallPopup) {
+          pwaInstallPopup.style.display = 'flex';
+        }
+      }, 1000);
+    });
+    
+    function installPWA() {
+      if (pwaInstallPopup) {
+        pwaInstallPopup.style.display = 'none';
+      }
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('User accepted the PWA install');
+            localStorage.setItem('pwaInstallPromptDismissed', 'true');
+          } else {
+            console.log('User dismissed the PWA install');
+          }
+          deferredPrompt = null;
+        });
+      }
+    }
+    
+    function dismissPWAPopup() {
+      if (pwaInstallPopup) {
+        pwaInstallPopup.style.display = 'none';
+      }
+      localStorage.setItem('pwaInstallPromptDismissed', 'true');
+    }
+    
+    // Redirect to register.html when "Get Started" button is clicked
+    document.getElementById("startButton").addEventListener("click", function() {
+      window.location.href = "register.html";
+    });
+  </script>
+  
+  <!-- Additional script for other functionality can go here -->
+</body>
+</html>
+
